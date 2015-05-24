@@ -1,0 +1,36 @@
+.form-horizontal {
+    display: inline-block;
+    margin: 35px;
+    width: 350px;
+}
+
+body {
+    background-image: url("../resources/SoftUni-Wallpaper-1440-900.png");
+}
+
+.form-horizontal .radio {
+    text-align: left;
+}
+
+#mainBox {
+    padding: 70px;
+    text-align: center;
+}
+fieldset {
+    text-align: center;
+}
+.ng-scope {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: black;
+}
+
+.form-control {
+    width: 90%;
+    margin-left: 10px;
+}
+
+.form-horizontal .form-group {
+    margin-left: -5px;
+    width: 380px;
+}
