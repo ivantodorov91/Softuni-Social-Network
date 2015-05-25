@@ -4,13 +4,10 @@
     width: 350px;
 }
 
-body {
-    background-image: url("../resources/SoftUni-Wallpaper-1440-900.png");
-}
-
 .form-horizontal .radio {
     text-align: left;
 }
+
 
 #mainBox {
     padding: 70px;
@@ -23,8 +20,12 @@ fieldset {
     width: 1200px;
     margin: 0 auto;
     background-color: black;
+
 }
 
+#wrapper {
+    margin-top: 60px;
+}
 .form-control {
     width: 90%;
     margin-left: 10px;
@@ -41,4 +42,64 @@ fieldset {
 
 .nav > li > a {
     display: initial;
+}
+
+.modal-dialog {
+    display: block;
+}
+
+#postBox {
+    float: left;
+    margin-left: 50px;
+}
+
+.modal-footer {
+    padding: 0 2px 0 0;
+}
+
+.modal-body p {
+    overflow-wrap: break-word;
+}
+
+.modal-title {
+    display: inline;
+}
+
+.modal-footer .form-group {
+    display: inline-block;
+    width: 440px;
+    margin-top: 13px;
+}
+
+.likes {
+    float: right;
+}
+
+.modal-comment {
+    position: relative;
+    padding: 10px;
+    display: initial;
+}
+
+.comment-author-photo {
+    float: left;
+    margin-right: 15px;
+}
+.hr-comment {
+    margin-top: 10px;
+}
+
+.comment-info {
+    float: left;
+    margin-right: 50px;
+}
+
+.panel {
+    margin-bottom: 0px;
+}
+
+#fixNav {
+    position: fixed;
+    top: 0px;
+    z-index: 1;
 }

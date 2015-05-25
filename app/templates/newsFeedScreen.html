@@ -1,5 +1,44 @@
-<div ng-include="'templates/nav-bar.html'"></div>
+<div id="fixNav" ng-include="'templates/nav-bar.html'"></div>
 
-<div id="mainBox" ng-controller="FeedController">
+<div id="wrapper">
     <h1>News Feed</h1>
+    <div id="postBox">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img ng-src="../resources/SoftUni-Wallpaper-1440-900.png" width="50px" height="50px">
+                    <h4 class="modal-title">User Name</h4>
+                    <div class="likes">Likes <span class="badge">42</span></div>
+                </div>
+                <div class="modal-body">
+                    <p>Post Content!</p>
+                </div>
+                <hr/>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Comments:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="modal-comment">
+                            <img class="comment-author-photo" ng-src="../resources/SoftUni-Wallpaper-1440-900.png" width="50px" height="50px">
+                            <div class="comment-info">
+                                <div class="comment-author">Author Author</div>
+                                <div class="comment-date">2000/12/12</div>
+                            </div>
+                            <div class="comment-comment">Comment!</div>
+                        </div>
+                        <hr class="hr-comment"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group has-success">
+                        <input type="text" class="form-control" id="inputSuccess">
+                    </div>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Like</button>
+                    <button type="button" class="btn btn-primary">Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
