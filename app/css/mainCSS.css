@@ -16,15 +16,18 @@
 fieldset {
     text-align: center;
 }
-.ng-scope {
+
+#outBox {
     width: 1200px;
     margin: 0 auto;
     background-color: black;
-
 }
 
 #wrapper {
     margin-top: 60px;
+    width: 1200px;
+    margin: 0 auto;
+    background-color: black;
 }
 .form-control {
     width: 90%;
@@ -34,6 +37,12 @@ fieldset {
 .form-horizontal .form-group {
     margin-left: -5px;
     width: 380px;
+}
+
+#navMain {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: black;
 }
 
 .nav > li {
@@ -102,4 +111,8 @@ fieldset {
     position: fixed;
     top: 0px;
     z-index: 1;
+}
+
+#newsHeader {
+    margin-top: 55px;
 }

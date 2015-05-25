@@ -1,12 +1,12 @@
 'use strict';
 
-SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl) {
+SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentication) {
     var service = {};
 
     var serviceUrl = baseServiceUrl + '/users';
 
     service.getUserPreviewData = function (user, success, error) {
-        $http.get(serviceUrl + '/' + user + '/preview', {headers: headers})
+        $http.get(serviceUrl + '/' + user + '/preview', {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(error);

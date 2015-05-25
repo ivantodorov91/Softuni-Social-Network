@@ -1,17 +1,18 @@
 <div id="fixNav" ng-include="'templates/nav-bar.html'"></div>
 
-<div id="wrapper">
-    <h1>News Feed</h1>
-    <div id="postBox">
+<div id="wrapper" ng-controller="FeedController"->
+    <h1 id="newsHeader">News Feed</h1>
+    <div id="postBox" ng-repeat="posts in feed">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img ng-src="../resources/SoftUni-Wallpaper-1440-900.png" width="50px" height="50px">
-                    <h4 class="modal-title">User Name</h4>
-                    <div class="likes">Likes <span class="badge">42</span></div>
+                    <img ng-src="{{posts.author.profileImageData}}" width="50px" height="50px">
+                    <h4 class="modal-title">{{posts.author.name}}</h4>
+                    <div class="likes">Likes <span class="badge">{{posts.liked}}</span></div>
+                    <div class="comment-date">{{posts.date}}</div>
                 </div>
                 <div class="modal-body">
-                    <p>Post Content!</p>
+                    <p>{{posts.postContent}}</p>
                 </div>
                 <hr/>
 
@@ -19,14 +20,14 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Comments:</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" ng-repeat="com in posts.comments">
                         <div class="modal-comment">
-                            <img class="comment-author-photo" ng-src="../resources/SoftUni-Wallpaper-1440-900.png" width="50px" height="50px">
+                            <img class="comment-author-photo" ng-src="{{com.author.profileImageData || 'resources/no avatar.png'}}" width="50px" height="50px">
                             <div class="comment-info">
-                                <div class="comment-author">Author Author</div>
-                                <div class="comment-date">2000/12/12</div>
+                                <div class="comment-author">{{com.author.name}}</div>
+                                <div class="comment-date">{{com.date}}</div>
                             </div>
-                            <div class="comment-comment">Comment!</div>
+                            <div class="comment-comment">{{com.commentContent}}</div>
                         </div>
                         <hr class="hr-comment"/>
                     </div>
