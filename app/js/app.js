@@ -9,5 +9,18 @@ SoftUniSocialNetwork.config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'templates/loginRegisterScreen.html',
             controller: 'MainController'
-        }).otherwise({redirectTo: '/'});
+        })
+        .when('/home', {
+            templateUrl: 'templates/newsFeedScreen.html',
+            controller: 'MainController'
+        })
+        .when('/user/logout', {
+            templateUrl: 'templates/loginRegisterScreen.html',
+            controller: 'MainController'
+        })
+        .when('/user/me', {
+            templateUrl: 'templates/profileScreen.html',
+            controller: 'MainController'
+        })
+        .otherwise({redirectTo: '/'});
 });

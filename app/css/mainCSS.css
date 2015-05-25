@@ -20,7 +20,7 @@ fieldset {
     text-align: center;
 }
 .ng-scope {
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
     background-color: black;
 }
@@ -33,4 +33,12 @@ fieldset {
 .form-horizontal .form-group {
     margin-left: -5px;
     width: 380px;
+}
+
+.nav > li {
+    padding-top: 15px;
+}
+
+.nav > li > a {
+    display: initial;
 }

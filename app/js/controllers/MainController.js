@@ -1,6 +1,6 @@
 'use strict';
 
-SoftUniSocialNetwork.controller('MainController', function ($scope, $location, authentication, notifyService) {
+SoftUniSocialNetwork.controller('MainController', function ($scope,authentication, $location, user, notifyService) {
     $scope.username = authentication.GetUsername();
     $scope.isAdmin = authentication.GetIsAdmin();
     $scope.isNotAdmin = (!$scope.isAdmin || $scope.isAdmin == "false");

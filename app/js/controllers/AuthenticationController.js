@@ -1,7 +1,7 @@
 'use strict';
 
 SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $location, $route,
-                               authentication, notifyService) {
+                                                            authentication, notifyService) {
 
     var ClearData = function() {
         $scope.loginData = "";
@@ -20,12 +20,19 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
                 if (authentication.GetIsAdmin() == "true") {
                     $location.path('/admin/home');
                 } else {
-                    $location.path('/user/home');
+                    $location.path('/home');
                 }
             },
             function (serverError) {
                 notifyService.showError("Unsuccessful Login!", serverError);
             });
+    };
+
+    $scope.logout = function () {
+        notifyService.showInfo("Successful Logout!");
+        ClearData();
+        authentication.ClearCredentials();
+        $route.reload();
     };
 
     $scope.register = function() {
@@ -34,7 +41,7 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
                 notifyService.showInfo("Successful Register!");
                 authentication.SetCredentials(serverData);
                 ClearData();
-                $location.path('/user/home');
+                $location.path('/home');
             },
             function(serverError) {
                 notifyService.showError("Unsuccessful Register!", serverError);
@@ -42,10 +49,7 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
     };
 
 
-
-
-
-
-
-
+    $scope.loggedIn = function() {
+        return authentication.isLoggedIn();
+    };
 });
