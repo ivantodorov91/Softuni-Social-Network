@@ -1,14 +1,15 @@
 <div id="fixNav" ng-include="'templates/nav-bar.html'"></div>
 
-<div id="wrapper" ng-controller="FeedController"->
+<div id="wrapper" ng-controller="FeedController">
     <h1 id="newsHeader">News Feed</h1>
-    <div id="postBox" ng-repeat="posts in feed">
+    <h2 ng-if="feed.length == []">You don`t have feed bro get some friends!</h2>
+    <div id="postBox"  ng-repeat="posts in feed">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img ng-src="{{posts.author.profileImageData}}" width="50px" height="50px">
+                    <img ng-src="{{posts.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
                     <h4 class="modal-title">{{posts.author.name}}</h4>
-                    <div class="likes">Likes <span class="badge">{{posts.liked}}</span></div>
+                    <div class="likes">Likes <span class="badge">{{posts.likesCount}}</span></div>
                     <div class="comment-date">{{posts.date}}</div>
                 </div>
                 <div class="modal-body">
@@ -22,7 +23,7 @@
                     </div>
                     <div class="panel-body" ng-repeat="com in posts.comments">
                         <div class="modal-comment">
-                            <img class="comment-author-photo" ng-src="{{com.author.profileImageData || 'resources/no avatar.png'}}" width="50px" height="50px">
+                            <img class="comment-author-photo" ng-src="{{com.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
                             <div class="comment-info">
                                 <div class="comment-author">{{com.author.name}}</div>
                                 <div class="comment-date">{{com.date}}</div>
@@ -42,4 +43,7 @@
             </div>
         </div>
     </div>
+
+    <div id="shortFriendListModalDialog" class="modal-dialog" ng-include="'templates/shortFriendList.html'"></div>
+
 </div>

@@ -2,6 +2,7 @@
 
 SoftUniSocialNetwork.controller('MainController', function ($scope,authentication, $location, user, notifyService) {
     $scope.username = authentication.GetUsername();
+    $scope.access_token = localStorage.access_token;
     $scope.isAdmin = authentication.GetIsAdmin();
     $scope.isNotAdmin = (!$scope.isAdmin || $scope.isAdmin == "false");
 

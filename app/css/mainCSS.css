@@ -8,6 +8,9 @@
     text-align: left;
 }
 
+body {
+    background-color: black;
+}
 
 #mainBox {
     padding: 70px;
@@ -115,4 +118,40 @@ fieldset {
 
 #newsHeader {
     margin-top: 55px;
+}
+
+#shortFriendListModalDialog {
+    width: 500px;
+    margin-left: 660px;
+    margin-top: 30px;
+    position: fixed;
+}
+
+#shortFriendListModalContent {
+    height: 400px;
+}
+
+#shortFriendListModalBody {
+    padding: 10px;
+}
+
+.shortFriendListPhoto {
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.shortFriendListFriendName {
+    position: absolute;
+    margin-top: 110px;
+    margin-left: -120px;
+    color: red;
+    font-weight: bolder;
+    background-color: black;
+}
+
+#shortFriendListModalBody2 {
+    padding: 10px;
+    display: initial;
+
 }

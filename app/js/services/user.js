@@ -21,28 +21,35 @@ SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentica
 
 
     service.searchUsersByName = function (searchData, success, error) {
-        $http.get(serviceUrl + '/search?searchTerm=' + searchData, {headers: headers})
+        $http.get(serviceUrl + '/search?searchTerm=' + searchData, {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(error);
     };
 
     service.getUserWallByPages = function (user, success, error) {
-        $http.get(serviceUrl + '/' + user + '/wall?StartPostId=&PageSize=10', {headers: headers})
+        $http.get(serviceUrl + '/' + user + '/wall?StartPostId=&PageSize=10', {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(error);
     };
 
     service.getFriendDetailedFriendsList = function (user, success, error) {
-        $http.get(serviceUrl + '/' + user + '/friends', {headers: headers})
+        $http.get(serviceUrl + '/' + user + '/friends', {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(error);
     };
 
     service.getFriendFriendsPreview = function (user, success, error) {
-        $http.get(serviceUrl + '/' + user + '/friends/preview', {headers: headers})
+        $http.get(serviceUrl + '/' + user + '/friends/preview', {headers: authentication.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(error);
+    };
+
+    service.getMyFriendsPreview = function (success, error) {
+        $http.get(baseServiceUrl + '/me/friends/preview', {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(error);

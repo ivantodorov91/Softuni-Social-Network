@@ -32,7 +32,7 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
         notifyService.showInfo("Successful Logout!");
         ClearData();
         authentication.ClearCredentials();
-        $route.reload();
+        $location.path('/');
     };
 
     $scope.register = function() {

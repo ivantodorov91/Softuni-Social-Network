@@ -1,0 +1,14 @@
+
+<div id="shortFriendListModalContent" class="modal-content">
+    <div class="modal-header">
+        <a href="">Friends total <span class="badge">{{shortFriendsList.totalCount}}</span></a>
+    </div>
+    <div id="shortFriendListModalBody" class="modal-body">
+        <div id="shortFriendListModalBody2" ng-repeat="friend in shortFriendsList.friends">
+            <a href="">
+                <img class="shortFriendListPhoto" ng-src="{{friend.profileImageData || 'resources/noPhoto.jpg'}}" width="130px" height="130px">
+                <span class="shortFriendListFriendName">{{friend.name}}</span>
+            </a>
+        </div>
+    </div>
+</div>

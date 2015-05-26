@@ -5,12 +5,19 @@ var pesho;
     $scope.getFeed = function() {
         feed.getNewsFeed(function(serverData) {
             $scope.feed = serverData;
-            console.log(serverData);
-        }, function (serverError) {
-            console.log(serverError);
-        })
+            var pesho = serverData;
+            console.log(pesho);
+        });
+    };
+
+    $scope.getShortFriendsList = function() {
+        var username  = authentication.GetUsername();
+        user.getMyFriendsPreview(function(serverData) {
+            $scope.shortFriendsList = serverData;
+        });
     };
 
     $scope.getFeed();
+    $scope.getShortFriendsList();
 
 });
