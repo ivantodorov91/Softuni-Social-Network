@@ -1,19 +1,22 @@
 'use strict';
 
 SoftUniSocialNetwork.controller('FeedController', function ($scope, feed, authentication, $location, user, notifyService) {
-var pesho;
+    var temp;
     $scope.getFeed = function() {
         feed.getNewsFeed(function(serverData) {
+            temp = serverData;
+            console.log(temp);
             $scope.feed = serverData;
-            var pesho = serverData;
-            console.log(pesho);
+        }, function (serverError) {
+            console.log(serverError);
         });
     };
 
     $scope.getShortFriendsList = function() {
-        var username  = authentication.GetUsername();
         user.getMyFriendsPreview(function(serverData) {
             $scope.shortFriendsList = serverData;
+        }, function(serverError) {
+            console.log(serverError);
         });
     };
 

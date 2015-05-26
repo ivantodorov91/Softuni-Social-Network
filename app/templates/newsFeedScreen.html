@@ -33,11 +33,12 @@
                         <hr class="hr-comment"/>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div ng-controller="PostsController" class="modal-footer">
                     <div class="form-group has-success">
                         <input type="text" class="form-control" id="inputSuccess">
                     </div>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Like</button>
+                    <button type="button" class="btn btn-success" ng-click="likePost(posts.id)" data-dismiss="modal" ng-if="posts.liked == false">Like</button>
+                    <button type="button" class="btn btn-danger" ng-click="hatePost(posts.id)" data-dismiss="modal" ng-if="posts.liked == true">Hate</button>
                     <button type="button" class="btn btn-primary">Comment</button>
                 </div>
             </div>
