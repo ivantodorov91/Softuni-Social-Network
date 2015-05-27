@@ -155,3 +155,11 @@ fieldset {
     display: initial;
 
 }
+
+#inputSuccess {
+    margin-right: -10px;
+}
+
+#likeButton, #hateButton {
+    width: 55px;
+}

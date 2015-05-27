@@ -11,7 +11,6 @@ SoftUniSocialNetwork.factory('feedPosts', function ($http, baseServiceUrl, authe
         });
     };
 
-
     service.unLikePost = function (postId ,success, error) {
         $http.delete(baseServiceUrl + '/Posts/' + postId + '/likes', {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
@@ -19,5 +18,12 @@ SoftUniSocialNetwork.factory('feedPosts', function ($http, baseServiceUrl, authe
             }).error(error);
     };
 
+    service.postComment = function (postId, data, success, error) {
+        $http.post(
+            baseServiceUrl + '/Posts/' + postId + '/comments', data, {headers: authentication.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(error);
+    };
     return service;
 });

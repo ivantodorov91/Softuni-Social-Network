@@ -8,19 +8,5 @@ SoftUniSocialNetwork.factory('feed', function ($http, baseServiceUrl, authentica
             }).error(error);
     };
 
-    service.likePost = function (postId ,success, error) {
-        $http.post(baseServiceUrl + '/Posts/' + postId + '/likes', {headers: authentication.GetHeaders()})
-            .success(function (data, status, headers, config) {
-                success(data);
-            }).error(error);
-    };
-
-    service.unLikePost = function (postId ,success, error) {
-        $http.delete(baseServiceUrl + '/Posts/' + postId + '/likes', {headers: authentication.GetHeaders()})
-            .success(function (data, status, headers, config) {
-                success(data);
-            }).error(error);
-    };
-
     return service;
 });
