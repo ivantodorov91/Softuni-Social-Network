@@ -25,5 +25,16 @@ SoftUniSocialNetwork.factory('feedPosts', function ($http, baseServiceUrl, authe
                 success(data);
             }).error(error);
     };
+
+    service.getPostComments = function (postId ,success, error) {
+        $http({
+            method: 'GET',
+            url: baseServiceUrl + '/Posts/' + postId + '/comments',
+            headers: authentication.GetHeaders()
+        }).success(function(data){
+            success(data);
+        });
+    };
+
     return service;
 });

@@ -55,5 +55,41 @@ SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentica
             }).error(error);
     };
 
+    service.getFriendRequests = function (success, error) {
+      $http.get(baseServiceUrl + '/me/requests', {headers: authentication.GetHeaders()})
+          .success(function (data, status, headers, config) {
+              success(data);
+          }).error(error);
+    };
+
+    service.getMyUserData = function (success, error) {
+        $http.get(baseServiceUrl + '/me' , {headers: authentication.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(error);
+    };
+
+    service.acceptFriend = function (id, success, error) {
+        $http({
+            method: 'PUT',
+            url: baseServiceUrl + '/me/requests/'+ id + '?status=approved',
+            headers:authentication.GetHeaders()
+        }).success(function(data) {
+            success(data);
+        });
+    };
+
+    service.rejectFriend = function (id, success, error) {
+        $http({
+            method: 'PUT',
+            url: baseServiceUrl + '/me/requests/'+ id + '?status=rejected',
+            headers:authentication.GetHeaders()
+        }).success(function(data) {
+            success(data);
+        });
+    };
+
+
+
     return service;
 });

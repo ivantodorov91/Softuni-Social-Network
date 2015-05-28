@@ -10,7 +10,7 @@ SoftUniSocialNetwork.controller('FeedController', function ($scope, feed, feedPo
                 $scope.feed[post].comments = $scope.feed[post].comments.reverse();
             }
         }, function (serverError) {
-            console.log(serverError);
+            notifyService.showError("Cannot show feed!", serverError);
         });
     };
 
@@ -31,6 +31,17 @@ SoftUniSocialNetwork.controller('FeedController', function ($scope, feed, feedPo
             });
     };
 
+    $scope.getPostComments = function(postId, postNumber) {
+        feedPosts.getPostComments(postId,
+            function(serverData) {
+                $scope.feed[postNumber].totalCommentsCount = serverData.length;
+                $scope.feed[postNumber].comments = serverData.reverse();
+            }, function(serverError) {
+
+            });
+    };
+
+
     $scope.hatePost = function(postId) {
         feedPosts.unLikePost(postId,
             function(serverData) {
@@ -43,13 +54,13 @@ SoftUniSocialNetwork.controller('FeedController', function ($scope, feed, feedPo
     $scope.postComment = function(postId, commentContent, postnumber) {
         feedPosts.postComment(postId, {"commentContent": commentContent},
             function(serverData) {
-                console.log(serverData);
                 $scope.feed[postnumber]['comments'].push(serverData);
                 notifyService.showInfo('Comment posted!');
             }, function(serverError) {
                 notifyService.showError('Comment NOT posted!', serverError);
             });
     };
+
 
     $scope.getFeed();
     $scope.getShortFriendsList();

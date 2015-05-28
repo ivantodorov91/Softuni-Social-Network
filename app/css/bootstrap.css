@@ -1080,7 +1080,7 @@ body {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #888888;
+    color: aliceblue;
     background-color: #060606;
 }
 input,
@@ -1210,7 +1210,7 @@ h6 .small,
 .h6 .small {
     font-weight: normal;
     line-height: 1;
-    color: #888888;
+    color: aliceblue;
 }
 h1,
 .h1,
