@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/user/me">
-                <img id="profilePhoto" ng-src="{{profilePicture || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
+                <img id="profilePhoto" ng-src="{{myUserData.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
             </a>
             <a class="navbar-brand" href="#/user/me">{{username}}</a>
         </div>
@@ -18,7 +18,7 @@
                 <li><a href="#/home">Feed</a></li>
                 <li><a href="#/user/me">Profile</a></li>
                 <li ng-controller="UserController" ng-mouseover="friendRequestMenu = true" ng-mouseleave="friendRequestMenu = false">
-                    <a href="#/home">Friend Request
+                    <a href="">Friend Request
                         <span class="badge" ng-if="friendRequests.length > 0">{{friendRequests.length}}</span>
                     </a>
                     <div>

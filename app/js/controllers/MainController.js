@@ -11,10 +11,10 @@ SoftUniSocialNetwork.controller('MainController', function ($scope,authenticatio
         $location.path("/");
     }
 
-    $scope.getProfilePhoto = function() {
+    $scope.getMyUserData = function() {
         user.getMyUserData(
             function(serverData) {
-                $scope.profilePicture = serverData.profileImageData;
+                $scope.myUserData = serverData;
             });
     };
 
@@ -36,7 +36,7 @@ SoftUniSocialNetwork.controller('MainController', function ($scope,authenticatio
         return dateCreated;
     };
 
-    $scope.getProfilePhoto();
+    $scope.getMyUserData();
 
 
 });
