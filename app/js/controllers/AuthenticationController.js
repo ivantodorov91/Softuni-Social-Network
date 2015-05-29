@@ -35,6 +35,7 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
         $location.path('/');
     };
 
+
     $scope.register = function() {
         authentication.Register($scope.registerData,
             function(serverData) {

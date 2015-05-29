@@ -54,5 +54,57 @@ SoftUniSocialNetwork.controller('UserController', function ($scope, $location, $
             });
     };
 
+    $scope.changePassword = function() {
+        user.changePassword(
+            {
+                oldPassword: $scope.passChangeData.oldPassword,
+                newPassword: $scope.passChangeData.newPassword,
+                confirmPassword: $scope.passChangeData.confirmNewPassword
+            },function(serverData) {
+                $location.path('/home');
+                notifyService.showInfo(serverData.message);
+            }, function(serverError) {
+                notifyService.showError('Cannot change password', serverError);
+            });
+    };
+
+    $scope.openFileUploaderForAvatar = function() {
+        document.getElementById('fileUploaderForAvatar').click();
+    };
+
+    $scope.openFileUploaderForCover = function() {
+        document.getElementById('fileUploaderForCover').click();
+    };
+
+    $scope.uploadAvatar = function(element) {
+        $scope.$apply(function(scope) {
+            var photofile = element.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                if(e.total <= 128000) {
+                    document.getElementById("avatarPic").src = e.target.result;
+                } else {
+                    notifyService.showError('File too big');
+                }
+            };
+            reader.readAsDataURL(photofile);
+        });
+    };
+
+    $scope.uploadCover = function(element) {
+        $scope.$apply(function(scope) {
+            var photofile = element.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                if(e.total <= 128000) {
+                    document.getElementById("coverPic").src = e.target.result;
+                } else {
+                    notifyService.showError('File too big');
+                }
+            };
+            reader.readAsDataURL(photofile);
+        });
+    };
+
     $scope.getFriendRequests();
 });

@@ -89,7 +89,16 @@ SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentica
         });
     };
 
-
+    service.changePassword = function (data, success,error) {
+        $http({
+            method: 'PUT',
+            url: baseServiceUrl + '/me/changepassword',
+            headers: authentication.GetHeaders(),
+            data: data
+        }).success(function(data, status, headers, config) {
+            success(data);
+        }).error(error);
+    };
 
     return service;
 });

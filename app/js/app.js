@@ -26,5 +26,13 @@ SoftUniSocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/userScreen.html',
             controller: 'MainController'
         })
+        .when('/profile/password', {
+            templateUrl: 'templates/editPasswordScreen.html',
+            controller: 'MainController'
+        })
+        .when('/profile' , {
+            templateUrl: 'templates/editProfileScreen.html',
+            controller: 'MainController'
+        })
         .otherwise({redirectTo: '/'});
 });

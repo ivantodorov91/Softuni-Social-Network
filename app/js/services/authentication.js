@@ -47,5 +47,7 @@ SoftUniSocialNetwork.factory('authentication', function ($http, baseServiceUrl) 
         return localStorage['access_token'];
     };
 
+
+
     return service;
 });
