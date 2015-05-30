@@ -18,12 +18,8 @@ SoftUniSocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/loginRegisterScreen.html',
             controller: 'AuthenticationController'
         })
-        .when('/user/me', {
-            templateUrl: 'templates/profileScreen.html',
-            controller: 'MainController'
-        })
         .when('/user/:username', {
-            templateUrl: 'templates/userScreen.html',
+            templateUrl: 'templates/profileScreen.html',
             controller: 'MainController'
         })
         .when('/profile/password', {

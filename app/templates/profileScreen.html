@@ -1,3 +1,27 @@
 <div id="fixNav" ng-include="'templates/nav-bar.html'"></div>
 
-<h1>HELOOOO BOSS!!!</h1>
+<div ng-controller="ProfileController">
+    <img id="myPofileCover" ng-src="{{currentUserData.coverImageData || 'resources/noCover.png'}}"/>
+    <div id="myProfileName">{{currentUserData.name}}</div>
+    <img id="myPofilePhoto" ng-src="{{currentUserData.profileImageData || 'resources/noPhoto.jpg'}}"/>
+    <button type="button" id="askFriendButton" ng-click="sendFriendRequest(); currentUserData.hasPendingRequest = true" ng-if="currentUserData.isFriend == false && currentUserData.hasPendingRequest == false && currentUserData.isMe == false"   class="btn btn-info" data-dismiss="modal">Add to friends</button>
+    <button type="button" id="pendingFriendButton" ng-if="currentUserData.isFriend == false && currentUserData.hasPendingRequest == true && currentUserData.isMe == false"   class="btn btn-info" data-dismiss="modal" disabled>Pending</button>
+    <button type="button" id="friendButton" ng-if="currentUserData.isFriend == true && currentUserData.hasPendingRequest == false && currentUserData.isMe == false"   class="btn btn-info" data-dismiss="modal" disabled>Friend</button>
+
+
+    <div id="postBox" style="margin-top: 85px;" ng-include="'templates/myPost.html'">
+
+    </div>
+
+    <div class="modal-content" ng-if="currentUserData.isFriend || currentUserData.isMe" style="position: absolute; width: 500px; padding: 15px; top: 415px; right: 300px;">
+        <div class="form-group has-success">
+            <textarea class="form-control" ng-model="postContent" style="width: 455px; height: 90px; resize: none;" rows="3" id="textArea"></textarea>
+        </div>
+        <img ng-src="{{myUserData.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px"/>
+        <span>Post as {{myUserData.name}}</span>
+        <button type="button" ng-click="addNewPost(); postContent = null"  class="btn btn-info" data-dismiss="modal">Post</button>
+    </div>
+
+
+    <div ng-if="currentUserData.isFriend || currentUserData.isMe" ng-controller="UserController" id="shortFriendListModalDialog" style="  top: 595px; position: absolute;" class="modal-dialog" ng-include="'templates/shortFriendList.html'"></div>
+</div>

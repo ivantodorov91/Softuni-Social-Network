@@ -1,0 +1,42 @@
+
+<div class="modal-dialog" ng-controller="PostController" ng-repeat="posts in feed">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img ng-src="{{posts.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
+            <h4 class="modal-title">{{posts.author.name}}</h4>
+            <div class="likes">Likes <span class="badge">{{posts.likesCount}}</span></div>
+            <div class="comment-date">{{dateFilter(posts.date)}}</div>
+        </div>
+        <div class="modal-body">
+            <p>{{posts.postContent}}</p>
+        </div>
+        <hr/>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Comments:</h3>
+            </div>
+            <div class="panel-body" ng-repeat="com in posts.comments">
+                <div class="modal-comment">
+                    <img class="comment-author-photo" ng-src="{{com.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
+                    <div class="comment-info">
+                        <div class="comment-author">{{com.author.name}}</div>
+                        <div class="comment-date">{{dateFilter(com.date)}}</div>
+                    </div>
+                    <div class="comment-comment">{{com.commentContent}}</div>
+                </div>
+                <hr class="hr-comment"/>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" ng-click="getPostComments(posts.id, posts.postNumber); com.hide = true;" ng-hide="com.hide" ng-if="posts.totalCommentsCount > 3" class="btn btn-primary" style=" display: block; margin: 5px auto -5px;">More comments</button>
+            <div class="form-group has-success">
+                <button type="button" class="btn btn-info" ng-if="!posts.drop" ng-click="posts.drop = true">Comment</button>
+                <input ng-if="posts.drop" type="text" ng-model="posts.currentPostComment" class="form-control" id="inputSuccess">
+            </div>
+            <button type="button" ng-if="posts.drop" ng-click="postComment(posts.id, posts.currentPostComment, posts.postNumber); posts.currentPostComment = null;" class="btn btn-primary">Post</button>
+            <button type="button" id="likeButton" class="btn btn-success" ng-click="likePost(posts.id); posts.liked = true; posts.likesCount = posts.likesCount + 1;" data-dismiss="modal" ng-if="posts.liked == false">Like</button>
+            <button type="button" id="hateButton" class="btn btn-danger" ng-click="hatePost(posts.id); posts.liked = false; posts.likesCount = posts.likesCount - 1;"  data-dismiss="modal" ng-if="posts.liked == true">Hate</button>
+        </div>
+    </div>
+</div>

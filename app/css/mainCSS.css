@@ -113,7 +113,7 @@ fieldset {
 #fixNav {
     position: fixed;
     top: 0px;
-    z-index: 1;
+    z-index: 2;
 }
 
 #newsHeader {
@@ -189,4 +189,35 @@ fieldset {
 
 #profilePhoto {
     margin-top: -15px;
+}
+
+#myPofileCover {
+    width: 1200px;
+    height: 250px;
+    margin-top: 50px;
+}
+
+#myProfileName {
+    position: absolute;
+    font-size: 40px;
+    top: 140px;
+    z-index: 1;
+    left: 650px;
+    font-weight: bold;
+}
+
+#myPofilePhoto {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 135px;
+    left: 385px;
+    border: 5px solid white;
+}
+
+#friendButton, #askFriendButton, #pendingFriendButton {
+    position: absolute;
+    left: 700px;
+    top: 200px;
+    opacity: 1;
 }

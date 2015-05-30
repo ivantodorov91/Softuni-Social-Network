@@ -40,6 +40,8 @@ SoftUniSocialNetwork.controller('MainController', function ($scope,authenticatio
         return notifyService.showError("Session Token Expired");
     }
 
+
+
     $scope.getMyUserData();
 
 

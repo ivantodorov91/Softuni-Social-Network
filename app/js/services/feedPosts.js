@@ -36,5 +36,17 @@ SoftUniSocialNetwork.factory('feedPosts', function ($http, baseServiceUrl, authe
         });
     };
 
+
+    service.AddNewPost = function(data, success, error) {
+        $http({
+            method: 'POST',
+            url: baseServiceUrl + '/posts',
+            headers: authentication.GetHeaders(),
+            data: data
+        }).success(function(data) {
+            success(data);
+        }).error(error);
+    };
+
     return service;
 });
