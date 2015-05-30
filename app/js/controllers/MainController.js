@@ -29,12 +29,16 @@ SoftUniSocialNetwork.controller('MainController', function ($scope,authenticatio
     };
 
     $scope.dateFilter = function(date) {
-        var date = new Date(date);
-        var dateCreated = date.toLocaleString();
+        date = new Date(date);
+        date = date.toLocaleString();
 
-
-        return dateCreated;
+        return date;
     };
+
+    if (!localStorage.access_token) {
+        $location.path("/");
+        return notifyService.showError("Session Token Expired");
+    }
 
     $scope.getMyUserData();
 

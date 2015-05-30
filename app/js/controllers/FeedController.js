@@ -17,8 +17,6 @@ SoftUniSocialNetwork.controller('FeedController', function ($scope, feed, feedPo
     $scope.getShortFriendsList = function() {
         user.getMyFriendsPreview(function(serverData) {
             $scope.shortFriendsList = serverData;
-        }, function(serverError) {
-            console.log(serverError);
         });
     };
 

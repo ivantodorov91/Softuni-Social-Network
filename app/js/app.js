@@ -8,7 +8,7 @@ SoftUniSocialNetwork.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'templates/loginRegisterScreen.html',
-            controller: 'MainController'
+            controller: 'AuthenticationController'
         })
         .when('/home', {
             templateUrl: 'templates/newsFeedScreen.html',
@@ -16,7 +16,7 @@ SoftUniSocialNetwork.config(function ($routeProvider) {
         })
         .when('/user/logout', {
             templateUrl: 'templates/loginRegisterScreen.html',
-            controller: 'MainController'
+            controller: 'AuthenticationController'
         })
         .when('/user/me', {
             templateUrl: 'templates/profileScreen.html',

@@ -4,7 +4,7 @@
     <h1>Edit Profile</h1>
 
 
-    <form class="form-horizontal" ng-controller="UserController" ng-submit="" style="width: 600px;">
+    <form class="form-horizontal" ng-controller="UserController" style="width: 600px;">
         <fieldset>
             <div style="float: left;">
                 <img id="avatarPic" ng-src="{{myUserData.profileImageData || 'resources/noPhoto.jpg'}}"  width="150" height="150" />
@@ -65,16 +65,12 @@
                     </div>
                 </div>
                 <div id="change-cover-right">
-                    <img id="coverPic" ng-src="{{userData.coverImageData || 'resources/noCover.png'}}" width="360" height="90" />
+                    <img id="coverPic" ng-src="{{myUserData.coverImageData || 'resources/noCover.png'}}" width="360" height="90" />
                 </div>
             </div>
-
-
-
-
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                    <button type="submit" class="btn btn-primary" style="margin-top: 20px; margin-left: 100px;" >Save Changes</button>
+                    <button type="submit" class="btn btn-primary" ng-click="editProfile()" style="margin-top: 20px; margin-left: 100px;" >Save Changes</button>
                 </div>
             </div>
         </fieldset>

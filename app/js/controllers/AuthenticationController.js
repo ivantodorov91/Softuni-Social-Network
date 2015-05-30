@@ -16,12 +16,7 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
                 notifyService.showInfo("Successfully logged in!");
                 authentication.SetCredentials(serverData);
                 ClearData();
-
-                if (authentication.GetIsAdmin() == "true") {
-                    $location.path('/admin/home');
-                } else {
-                    $location.path('/home');
-                }
+                $location.path('/home');
             },
             function (serverError) {
                 notifyService.showError("Unsuccessful Login!", serverError);
@@ -29,10 +24,17 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
     };
 
     $scope.logout = function () {
-        notifyService.showInfo("Successful Logout!");
-        ClearData();
-        authentication.ClearCredentials();
-        $location.path('/');
+        authentication.Logout(
+            function(serverData) {
+                notifyService.showInfo(serverData.message);
+                ClearData();
+                authentication.ClearCredentials();
+                $location.path('/');
+            },
+            function(serverError) {
+                notifyService.showError("Cannot logout", serverError);
+            }
+        )
     };
 
 

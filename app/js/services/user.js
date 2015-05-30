@@ -89,7 +89,7 @@ SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentica
         });
     };
 
-    service.changePassword = function (data, success,error) {
+    service.ChangePassword = function (data, success,error) {
         $http({
             method: 'PUT',
             url: baseServiceUrl + '/me/changepassword',
@@ -98,6 +98,17 @@ SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentica
         }).success(function(data, status, headers, config) {
             success(data);
         }).error(error);
+    };
+
+    service.EditProfile = function (data, success, error) {
+      $http({
+          method: 'PUT',
+          url: baseServiceUrl + '/me',
+          headers: authentication.GetHeaders(),
+          data: data
+      }).success(function (data, status, headers, config) {
+          success(data);
+      }).error(error);
     };
 
     return service;

@@ -19,6 +19,16 @@ SoftUniSocialNetwork.factory('authentication', function ($http, baseServiceUrl) 
             }).error(error);
     };
 
+    service.Logout = function (success, error) {
+        $http({
+            method: 'POST',
+            url: serviceUrl + '/Logout',
+            headers: this.GetHeaders()
+        }).success(function(data) {
+            success(data);
+        }).error(error)
+    };
+
     service.SetCredentials = function (serverData) {
         localStorage['access_token'] = serverData.access_token;
         localStorage['userName'] = serverData.userName;
