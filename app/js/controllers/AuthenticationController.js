@@ -39,16 +39,21 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
 
 
     $scope.register = function() {
-        authentication.Register($scope.registerData,
-            function(serverData) {
-                notifyService.showInfo("Successful Register!");
-                authentication.SetCredentials(serverData);
-                ClearData();
-                $location.path('/home');
-            },
-            function(serverError) {
-                notifyService.showError("Unsuccessful Register!", serverError);
-            });
+        if ($scope.registerData.password == $scope.registerData.confirmPassword) {
+            authentication.Register($scope.registerData,
+                function(serverData) {
+                    notifyService.showInfo("Successful Register!");
+                    authentication.SetCredentials(serverData);
+                    ClearData();
+                    $location.path('/home');
+                },
+                function(serverError) {
+                    notifyService.showError("Unsuccessful Register!", serverError);
+                });
+        } else {
+            notifyService.showError('Passwords must be the same!')
+        }
+
     };
 
 
