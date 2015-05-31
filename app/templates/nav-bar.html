@@ -27,7 +27,7 @@
                                 <img ng-src="{{friend.user.profileImageData || 'resources/noPhoto.jpg'}}" width="75px" height="75px"/>
                                 <div style="display: inline-block">{{friend.user.name}}</div>
                                 <div class="friendReqButtonsWrapper">
-                                    <button type="button"  class="btn btn-success" ng-click="acceptFriend(friend.id); friend.status = 1; friendRequests.length = friendRequests.length -1" data-dismiss="modal">Accept</button>
+                                    <button type="button" class="btn btn-success" ng-click="acceptFriend(friend.id); friend.status = 1; friendRequests.length = friendRequests.length -1" data-dismiss="modal">Accept</button>
                                     <button type="button"  class="btn btn-danger" ng-click="rejectFriend(friend.id); friend.status = 2; friendRequests.length = friendRequests.length -1" data-dismiss="modal">Reject</button>
                                 </div>
                             </li>

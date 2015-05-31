@@ -41,11 +41,31 @@ SoftUniSocialNetwork.factory('user', function ($http, baseServiceUrl, authentica
             }).error(error);
     };
 
-    service.GetFriendFriendsPreview = function (user, success, error) {
-        $http.get(serviceUrl + '/' + user + '/friends/preview', {headers: authentication.GetHeaders()})
+    service.GetFriendFriendsPreview = function (username, success, error) {
+        $http.get(serviceUrl + '/' + username + '/friends/preview', {headers: authentication.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(error);
+    };
+
+    service.GetFriendFullFriendsList = function (username, success, error) {
+        $http({
+            method: 'GET',
+            url: serviceUrl + username,
+            headers: authentication.GetHeaders()
+        }).success(function(data) {
+            success(data);
+        }).error(error);
+    };
+
+    service.GetMyFullFriendsList = function (success, error) {
+        $http({
+            method: 'GET',
+            url: baseServiceUrl + '/me/friends',
+            headers: authentication.GetHeaders()
+        }).success(function (data, status, headers, config) {
+            success(data);
+        }).error(error);
     };
 
     service.GetMyFriendsPreview = function (success, error) {

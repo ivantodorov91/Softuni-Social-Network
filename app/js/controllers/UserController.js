@@ -4,17 +4,6 @@ SoftUniSocialNetwork.controller('UserController', function ($scope, $location, $
 
     $scope.friendRequestMenu = false;
 
-   ////$scope.getUserPreviewData = function(username) {
-   //    user.GetUserPreviewData(username,
-   //        function(serverData) {
-   //            //$scope.currentUserData = serverData;
-   //        },
-   //        function (serverError) {
-   //            notifyService.showError('cannot see friend', serverError);
-   //        });
-   //};
-
-
     $scope.getFriendRequests = function() {
         if (localStorage.access_token) {
             user.getFriendRequests(

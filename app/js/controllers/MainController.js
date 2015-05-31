@@ -40,6 +40,11 @@ SoftUniSocialNetwork.controller('MainController', function ($scope,authenticatio
         return notifyService.showError("Session Token Expired");
     }
 
+    if ($location.$$path == '/home') {
+        $scope.friendsListOwner = localStorage.userName;
+    } else {
+        $scope.friendsListOwner = $location.$$path.slice(6);
+    }
 
 
     $scope.getMyUserData();

@@ -6,7 +6,6 @@ SoftUniSocialNetwork.controller('ProfileController', function ($scope, feed, fee
         user.GetUserFullData(username,
             function(serverData) {
                 $scope.currentUserData = serverData;
-                console.log(serverData);
                 $scope.currentUserData.isMe = false;
                 if ($scope.currentUserData.username == localStorage.userName) {
                     $scope.currentUserData.isMe = true;
@@ -18,7 +17,6 @@ SoftUniSocialNetwork.controller('ProfileController', function ($scope, feed, fee
         user.GetUserWallByPages(username,
             function(serverData) {
                 $scope.feed = serverData;
-
                 for (var post in $scope.feed) {
                     $scope.feed[post].postNumber = post;
                     $scope.feed[post].comments = $scope.feed[post].comments.reverse();

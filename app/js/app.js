@@ -30,5 +30,9 @@ SoftUniSocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/editProfileScreen.html',
             controller: 'MainController'
         })
+        .when('/users/:friendsListOwner/friends', {
+            templateUrl: 'templates/fullFriendsListScreen.html',
+            controller: 'MainController'
+        })
         .otherwise({redirectTo: '/'});
 });
