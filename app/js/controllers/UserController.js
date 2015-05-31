@@ -117,7 +117,8 @@ SoftUniSocialNetwork.controller('UserController', function ($scope, $location, $
         });
     };
 
+    if ($location.$$path != '/') {
+        $scope.getFriendRequests();
+    }
 
-
-    $scope.getFriendRequests();
 });

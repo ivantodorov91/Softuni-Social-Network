@@ -26,10 +26,10 @@ SoftUniSocialNetwork.controller('AuthenticationController', function ($scope, $l
     $scope.logout = function () {
         authentication.Logout(
             function(serverData) {
+                $location.path('/');
                 notifyService.showInfo(serverData.message);
                 ClearData();
                 authentication.ClearCredentials();
-                $location.path('/');
             },
             function(serverError) {
                 notifyService.showError("Cannot logout", serverError);
