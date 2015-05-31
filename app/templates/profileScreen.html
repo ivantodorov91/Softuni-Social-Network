@@ -13,13 +13,14 @@
 
     </div>
 
-    <div class="modal-content" ng-if="currentUserData.isFriend || currentUserData.isMe" style="position: absolute; width: 500px; padding: 15px; top: 415px; right: 300px;">
-        <div class="form-group has-success">
-            <textarea class="form-control" ng-model="postContent" style="width: 455px; height: 90px; resize: none;" rows="3" id="textArea"></textarea>
+    <div class="modal-content" ng-if="currentUserData.isFriend || currentUserData.isMe" style="position: absolute; width: 500px; padding: 15px; top: 415px; right: 390px;">
+        <div  class="form-group has-success">
+            <label for="textArea"></label>
+            <textarea ng-model="$parent.postContent" class="form-control"  style="width: 455px; height: 90px; resize: none;" rows="3" id="textArea"></textarea>
         </div>
         <img ng-src="{{myUserData.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px"/>
         <span>Post as {{myUserData.name}}</span>
-        <button type="button" ng-click="addNewPost(); postContent = null"  class="btn btn-info" data-dismiss="modal">Post</button>
+        <button type="button" ng-click="addNewPost(); $parent.postContent = null"  class="btn btn-info" data-dismiss="modal">Post</button>
     </div>
 
 

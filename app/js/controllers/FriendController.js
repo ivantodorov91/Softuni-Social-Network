@@ -6,7 +6,6 @@ SoftUniSocialNetwork.controller('FriendController', function ($scope, feed, feed
         user.GetMyFriendsPreview(function(serverData) {
             $scope.shortFriendsList = serverData;
         }, function(serverError) {
-            console.log(serverError);
         });
     };
 

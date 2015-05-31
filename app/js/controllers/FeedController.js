@@ -6,7 +6,7 @@ SoftUniSocialNetwork.controller('FeedController', function ($scope, feed, feedPo
         feed.GetNewsFeed(function(serverData) {
             $scope.feed = serverData;
             for (var post in $scope.feed) {
-                $scope.feed[post].postNumber = post;
+                $scope.feed[post].postNumber = parseInt(post) + 1;
                 $scope.feed[post].comments = $scope.feed[post].comments.reverse();
             }
         }, function (serverError) {

@@ -41,4 +41,33 @@ SoftUniSocialNetwork.controller('PostController', function ($scope, feed, feedPo
             });
     };
 
+    $scope.deletePostById = function (id, postNumber) {
+        feedPosts.DeletePostById(id,
+        function(serverData) {
+            notifyService.showInfo('Post deleted!');
+
+            $scope.feed.splice(postNumber - 1, postNumber);
+
+            for (var post in $scope.feed) {
+                $scope.feed[post].postNumber = parseInt(post) + 1;
+            }
+        },
+        function(serverError) {
+            notifyService.showError('Cannot delete post', serverError);
+        });
+    };
+
+    $scope.editPostById = function (id, postNumber) {
+        feedPosts.EditPostById(id,
+            {
+                postContent: $scope.posts.postContent
+            },
+            function(serverData) {
+                notifyService.showInfo('Post edited!');
+            },
+            function(serverError) {
+                notifyService.showError('Cannot edit post', serverError);
+            });
+    };
+
 });

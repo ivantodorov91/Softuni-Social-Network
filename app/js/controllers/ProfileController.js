@@ -17,8 +17,9 @@ SoftUniSocialNetwork.controller('ProfileController', function ($scope, feed, fee
         user.GetUserWallByPages(username,
             function(serverData) {
                 $scope.feed = serverData;
+
                 for (var post in $scope.feed) {
-                    $scope.feed[post].postNumber = post;
+                    $scope.feed[post].postNumber = parseInt(post) + 1;
                     $scope.feed[post].comments = $scope.feed[post].comments.reverse();
                 }
             });
@@ -33,10 +34,9 @@ SoftUniSocialNetwork.controller('ProfileController', function ($scope, feed, fee
             }, function(serverData) {
                 $scope.feed.unshift(serverData);
                 for (var post in $scope.feed) {
-                    $scope.feed[post].postNumber = post;
+                    $scope.feed[post].postNumber = parseInt(post) + 1;
                 }
 
-                console.log(serverData);
             }, function(serverError) {
                 notifyService.showError('Cannot add post', serverError);
             }

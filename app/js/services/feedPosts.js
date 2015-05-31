@@ -48,5 +48,26 @@ SoftUniSocialNetwork.factory('feedPosts', function ($http, baseServiceUrl, authe
         }).error(error);
     };
 
+    service.DeletePostById = function(id, success, error) {
+        $http({
+            method: 'DELETE',
+            url: baseServiceUrl + '/Posts/' + id,
+            headers: authentication.GetHeaders()
+        }).success(function(data) {
+            success(data);
+        }).error(error);
+    };
+
+    service.EditPostById = function(id,data, success, error) {
+        $http({
+            method: 'PUT',
+            data: data,
+            url: baseServiceUrl + '/Posts/' + id,
+            headers: authentication.GetHeaders()
+        }).success(function(data) {
+            success(data);
+        }).error(error);
+    };
+
     return service;
 });
