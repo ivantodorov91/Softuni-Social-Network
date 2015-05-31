@@ -34,7 +34,7 @@ SoftUniSocialNetwork.controller('PostController', function ($scope, feed, feedPo
     $scope.postComment = function(postId, commentContent, postnumber) {
         feedPosts.postComment(postId, {"commentContent": commentContent},
             function(serverData) {
-                $scope.feed[postnumber]['comments'].push(serverData);
+                $scope.feed[postnumber-1]['comments'].push(serverData);
                 notifyService.showInfo('Comment posted!');
             }, function(serverError) {
                 notifyService.showError('Comment NOT posted!', serverError);

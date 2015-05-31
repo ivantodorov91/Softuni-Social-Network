@@ -2,8 +2,12 @@
 <div class="modal-dialog" ng-controller="PostController" ng-repeat="posts in feed">
     <div class="modal-content">
         <div class="modal-header">
-            <img ng-src="{{posts.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
-            <h4 class="modal-title">{{posts.author.name}}</h4>
+            <a href="#/user/{{posts.author.username}}">
+                <img ng-src="{{posts.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
+            </a>
+            <a href="#/user/{{posts.author.username}}">
+                <h4 class="modal-title">{{posts.author.name}}</h4>
+            </a>
             <div class="likes">Likes <span class="badge">{{posts.likesCount}}</span></div>
             <button type="button" ng-click="deletePostById(posts.id, posts.postNumber)" ng-if="currentUserData.isMe == true || posts['author'].username == username"  class="btn btn-danger"  data-dismiss="modal">Delete</button>
             <button type="button" ng-click="posts.notEdit = true" ng-if="currentUserData.isMe == true || posts['author'].username == username"   class="btn btn-info"  data-dismiss="modal">Edit</button>
@@ -22,9 +26,11 @@
             </div>
             <div class="panel-body" ng-repeat="com in posts.comments">
                 <div class="modal-comment">
-                    <img class="comment-author-photo" ng-src="{{com.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
+                    <a href="#/user/{{com.author.username}}">
+                        <img class="comment-author-photo" ng-src="{{com.author.profileImageData || 'resources/noPhoto.jpg'}}" width="50px" height="50px">
+                    </a>
                     <div class="comment-info">
-                        <div class="comment-author">{{com.author.name}}</div>
+                        <a href="#/user/{{com.author.username}}"><div class="comment-author">{{com.author.name}}</div></a>
                         <div class="comment-date">{{dateFilter(com.date)}}</div>
                     </div>
                     <div class="comment-comment">{{com.commentContent}}</div>
